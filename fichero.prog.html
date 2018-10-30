@@ -1,0 +1,116 @@
+<html>
+<head><title>fichero.prog</title>
+
+<style>
+body{ 
+background:lightgray;
+}
+
+.PalabraReservada {
+    color:blue;
+    font-weight:bolder;
+}
+.comentario {
+    color:lightgreen;
+}
+.NombreFuncion {
+    color: white;
+    font-weight:bolder;
+}
+.NombreVariables {
+    color: yellow;
+}
+.Tipos {
+    color: red;
+}
+.Simbolos {
+    color: black;
+    font-weight:bolder;
+}
+.Asignacion {
+    color: yellow;
+    font-weight:bolder;
+}
+.SeparaTermina {
+    color: blue;
+}
+.Resto {
+    color: black;
+}
+.cuerpo {
+    color: orange;
+    font-weight:bolder;
+}
+.numero {
+    color: blue;
+}
+.cadena {
+    color: purple;
+    font-style:italic;
+}
+
+
+</style>
+</head>
+<body>
+<h1>C&oacute;digo del fichero fichero.prog</h1>
+<code>
+    <pre><span class="comentario">/***
+
+    @author: Antonio Moratilla
+    @description: Imprimir los números de fibonacci hasta pasar un umbral
+    @target: comprobar la sintaxis de un lenguaje
+
+    ***/</span>
+
+<span class="PalabraReservada">include</span> printflib<span class="SeparaTermina">;</span>
+
+<span class="PalabraReservada">function</span> <span class="NombreFuncion">main</span><span class="Simbolos">(</span><span class="Simbolos">)</span>:<span class="Tipos">void</span>
+<span class="cuerpo">begin</span>
+    <span class="Tipos">numero</span> <span class="NombreVariables">umbral</span><span class="Asignacion">:=</span><span class="numero">100</span><span class="SeparaTermina">;</span>  <span class="comentario">//establecemos el umbral hasta el que calcularemos fibonacci
+</span>    <span class="NombreFuncion">imprimir</span> <span class="Simbolos">(</span><span class="cadena">"Iniciando el cálculo de Fibonacci"</span><span class="Simbolos">)</span><span class="SeparaTermina">;</span>
+    <span class="Tipos">cadena</span> <span class="NombreVariables">valores</span> <span class="Asignacion">:=</span> <span class="NombreFuncion">fibonacci</span><span class="Simbolos">(</span><span class="NombreVariables">umbral</span><span class="Simbolos">)</span><span class="SeparaTermina">;</span>  <span class="comentario">/*llamamos a la función, y a ver si explota...*/</span>
+    <span class="NombreFuncion">imprimir</span> <span class="Simbolos">(</span><span class="NombreVariables">valores</span> <span class="Simbolos">+</span> <span class="cadena">"\nFin de fibonacci."</span><span class="Simbolos">)</span><span class="SeparaTermina">;</span>
+    <span class="comentario">//fin del /*programa*/
+</span><span class="cuerpo">end</span>
+
+<span class="comentario">/**
+    Función iterativa que se encarga de calcular fibonacci y generar el texto asociado
+**/</span>
+<span class="PalabraReservada">function</span> <span class="NombreFuncion">fibonacci</span><span class="Simbolos">(</span><span class="Tipos">numero</span> <span class="NombreVariables">umbral</span><span class="Simbolos">)</span>:<span class="Tipos">cadena</span>
+<span class="cuerpo">begin</span>
+    <span class="Tipos">numero</span> <span class="NombreVariables">numeroFibonacciInicio</span><span class="Asignacion">:=</span><span class="numero">0</span><span class="SeparaTermina">;</span>
+    <span class="Tipos">numero</span> <span class="NombreVariables">numeroFibonacciSegundo</span><span class="Asignacion">:=</span><span class="numero">1</span><span class="SeparaTermina">;</span>
+    <span class="Tipos">numero</span> <span class="NombreVariables">ResultadoFibonacci</span><span class="Asignacion">:=</span><span class="numero">0</span><span class="SeparaTermina">;</span>
+
+    <span class="Tipos">cadena</span> <span class="NombreVariables">temporal</span> <span class="Asignacion">:=</span> <span class="cadena">"Serie Fibonacci: "</span> 
+                        <span class="Simbolos">+</span> <span class="NombreFuncion">aCadena</span><span class="Simbolos">(</span><span class="NombreVariables">numeroFibonacciInicio</span><span class="Simbolos">)</span> 
+                        <span class="Simbolos">+</span> <span class="cadena">", "</span> 
+                        <span class="Simbolos">+</span> <span class="NombreFuncion">aCadena</span><span class="Simbolos">(</span><span class="NombreVariables">numeroFibonacciSegundo</span><span class="Simbolos">)</span><span class="SeparaTermina">;</span>
+
+    <span class="PalabraReservada">while</span> <span class="Simbolos">(</span><span class="NombreVariables">ResultadoFibonacci</span><span class="Simbolos"><</span><span class="NombreVariables">umbral</span><span class="Simbolos">)</span>
+    <span class="cuerpo">begin</span>
+        <span class="NombreVariables">ResultadoFibonacci</span><span class="Asignacion">:=</span><span class="NombreVariables">numeroFibonacciInicio</span>
+                            <span class="Simbolos">+</span> <span class="NombreVariables">numeroFibonacciSegundo</span><span class="SeparaTermina">;</span>
+        <span class="NombreVariables">temporal</span> <span class="Asignacion">:=</span> <span class="NombreVariables">temporal</span> <span class="Simbolos">+</span> <span class="cadena">", "</span> <span class="Simbolos">+</span> <span class="NombreFuncion">aCadena</span><span class="Simbolos">(</span><span class="NombreVariables">ResultadoFibonacci</span><span class="Simbolos">)</span><span class="SeparaTermina">;</span>
+        <span class="NombreVariables">numeroFibonacciInicio</span> <span class="Asignacion">:=</span> <span class="NombreVariables">numeroFibonacciSegundo</span><span class="SeparaTermina">;</span>  <span class="comentario">//actualizo en cada iteración
+</span>        <span class="NombreVariables">numeroFibonacciSegundo</span> <span class="Asignacion">:=</span> <span class="NombreVariables">ResultadoFibonacci</span><span class="SeparaTermina">;</span>
+    <span class="cuerpo">end</span>
+
+    <span class="NombreFuncion">devolver</span><span class="Simbolos">(</span><span class="NombreVariables">temporal</span><span class="Simbolos">)</span><span class="SeparaTermina">;</span> <span class="comentario">//devolvemos el resultado.
+</span><span class="cuerpo">end</span>
+
+<span class="PalabraReservada">function</span> <span class="NombreFuncion">imprimir</span><span class="Simbolos">(</span><span class="Tipos">cadena</span> <span class="NombreVariables">texto</span><span class="Simbolos">)</span>:<span class="Tipos">void</span>
+<span class="cuerpo">begin</span>
+    <span class="NombreFuncion">printf</span><span class="Simbolos">(</span><span class="NombreVariables">texto</span><span class="Simbolos">)</span><span class="SeparaTermina">;</span>
+<span class="cuerpo">end</span>
+
+<span class="PalabraReservada">function</span> <span class="NombreFuncion">aCadena</span><span class="Simbolos">(</span><span class="Tipos">numero</span> <span class="NombreVariables">x</span><span class="Simbolos">)</span>:<span class="Tipos">cadena</span>
+<span class="cuerpo">begin</span>
+    <span class="NombreFuncion">devolver</span> <span class="Simbolos">(</span> <span class="NombreFuncion">sprintf</span><span class="Simbolos">(</span><span class="cadena">"%d"</span><span class="SeparaTermina">,</span><span class="NombreVariables">x</span><span class="Simbolos">)</span><span class="Simbolos">)</span><span class="SeparaTermina">;</span>
+<span class="cuerpo">end</span>
+
+<pre>
+<code>
+<body>
+<html>
